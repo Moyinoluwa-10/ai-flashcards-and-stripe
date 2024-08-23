@@ -11,7 +11,6 @@ import { AppBar, Toolbar, Typography, Button, Box, Grid } from "@mui/material";
 
 
 export default function Home() {
-  console.log(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY)
   const handleSubmit = async () => {
     const checkoutSession = await fetch('/api/checkout_sessions', {
       method: 'POST',
@@ -36,7 +35,7 @@ export default function Home() {
         <Typography variant="h6" style={{flexGrow: 1}}>
           Flashcard SaaS
         </Typography>
-        <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+        
         <SignedOut>
           <Button color="inherit" href="/sign-in">Login</Button>
           <Button color="inherit" href="/sign-up">Sign Up</Button>
@@ -44,7 +43,7 @@ export default function Home() {
         <SignedIn>
           <UserButton />
         </SignedIn>
-        </ClerkProvider>
+        
       </Toolbar>
     </AppBar>
 
