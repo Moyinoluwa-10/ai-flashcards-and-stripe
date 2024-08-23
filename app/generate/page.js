@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react';
-import {getDoc, doc, collection, writeBatch,} from 'Firestore';
+import { Firestore } from 'firebase/firestore'
+import {getDoc, doc, collection, writeBatch,} from 'firebase/firestore';
 
 import {
   Container,
@@ -9,8 +10,13 @@ import {
   Button,
   Typography,
   Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogContentText,
+  DialogActions,
 } from '@mui/material'
-import { Firestore } from 'firebase/firestore'
+
 
 export default function Generate() {
   const [text, setText] = useState('')
