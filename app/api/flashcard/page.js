@@ -1,5 +1,7 @@
+'use client'
 import {useState, useEffect} from 'react';
 import {getDoc, doc, collection, writeBatch,} from 'Firestore'
+import { Box, Card, CardActionArea, CardContent, Container, Grid, Typography } from '@mui/material';
 
 export default function Flashcard() {
     const { isLoaded, isSignedIn, user } = useUser()
