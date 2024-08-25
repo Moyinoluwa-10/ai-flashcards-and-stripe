@@ -7,7 +7,7 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
-import { AppBar, Toolbar, Typography, Button, Box, Grid } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Box, Grid, Card, CardContent, Shadows } from "@mui/material";
 
 
 export default function Home() {
@@ -65,15 +65,69 @@ export default function Home() {
 
     <Box sx={{my: 6}}>
       <Typography variant="h4" component="h2" gutterBottom>Features</Typography>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} position="relative" top="50px">
         {/* Feature items */}
+        <Grid item>
+        <Card padding={2}>
+          <CardContent>
+            <Typography variant='h5'>Easy Input</Typography>
+            <Typography>
+              Upload Class content via text to generate likely questions for a quiz
+            </Typography>
+          </CardContent>
+        </Card>
+        </Grid>
+        <Grid item>
+        <Card>
+          <CardContent>
+            <Typography variant='h5'>Smart Flashcards</Typography>
+            <Typography>
+              Upload Class content via text to generate likely questions for a quiz
+            </Typography>
+          </CardContent>
+        </Card>
+        </Grid>
+        <Grid item>
+        <Card>
+          <CardContent>
+            <Typography variant='h5'>Accessible Anywhere</Typography>
+            <Typography>
+              Upload Class content via text to generate likely questions for a quiz
+            </Typography>
+          </CardContent>
+        </Card>
+        </Grid>
       </Grid>
     </Box>
 
-    <Box sx={{my: 6, textAlign: 'center'}}>
+    <Box sx={{my: 6, textAlign: 'center'}} position="relative" bottom="10px">
       <Typography variant="h4" component="h2" gutterBottom>Pricing</Typography>
-      <Grid container spacing={4} justifyContent="center">
+      <Grid container spacing={4} justifyContent="center" position="relative" top="50px" >
         {/* Pricing plans */}
+        <Grid item>
+        <Card margin={2}>
+          <CardContent >
+          <Box height="300px" width="400px">
+          <Typography variant='h4' >Free Version</Typography>
+          
+          <Typography variant='h5'>$0</Typography>
+          <Button variant= "outlined" position="absolute" bottom="10px">Start Now</Button>
+          </Box>
+          </CardContent>
+
+        </Card>
+        </Grid>
+        <Grid item>
+        <Card>
+          <CardContent>
+          <Box height="300px" minWidthwidth="400px">
+          <Typography variant='h4' >Premium Offers</Typography>
+          <Typography variant='h5'>$10</Typography>
+          <Button variant="outlined">Pay Now</Button>
+          </Box>
+          </CardContent>
+        </Card>
+        </Grid>
       </Grid>
     </Box>
 
