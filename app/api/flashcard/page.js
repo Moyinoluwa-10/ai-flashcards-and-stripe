@@ -1,69 +1,81 @@
-'use client'
-import {useState, useEffect} from 'react';
-import {getDoc, doc, collection, writeBatch,} from 'Firestore'
-import { Box, Card, CardActionArea, CardContent, Container, Grid, Typography } from '@mui/material';
+"use client";
+import { useState, useEffect } from "react";
+import { getDoc, doc, collection, writeBatch } from "firestore";
+import {
+  Box,
+  Card,
+  CardActionArea,
+  CardContent,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
 
 export default function Flashcard() {
-    const { isLoaded, isSignedIn, user } = useUser()
-    const [flashcards, setFlashcards] = useState([])
-    const [flipped, setFlipped] = useState({})
-  
-    const searchParams = useSearchParams()
-    const search = searchParams.get('id')
+  const { isLoaded, isSignedIn, user } = useUser();
+  const [flashcards, setFlashcards] = useState([]);
+  const [flipped, setFlipped] = useState({});
 
-    const handleCardClick = (id) => {
-        setFlipped((prev) => ({
-          ...prev,
-          [id]: !prev[id],
-        }))
-      }
-  
-    // ... (rest of the component)
-    useEffect(() => {
-        async function getFlashcard() {
-          if (!search || !user) return
-      
-          const colRef = collection(doc(collection(db, 'users'), user.id), search)
-          const docs = await getDocs(colRef)
-          const flashcards = []
-          docs.forEach((doc) => {
-            flashcards.push({ id: doc.id, ...doc.data() })
-          })
-          setFlashcards(flashcards)
-        }
-        getFlashcard()
-      }, [search, user]
-    )
+  const searchParams = useSearchParams();
+  const search = searchParams.get("id");
 
-    return (
+  const handleCardClick = (id) => {
+    setFlipped((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  // ... (rest of the component)
+  useEffect(() => {
+    async function getFlashcard() {
+      if (!search || !user) return;
+
+      const colRef = collection(doc(collection(db, "users"), user.id), search);
+      const docs = await getDocs(colRef);
+      const flashcards = [];
+      docs.forEach((doc) => {
+        flashcards.push({ id: doc.id, ...doc.data() });
+      });
+      setFlashcards(flashcards);
+    }
+    getFlashcard();
+  }, [search, user]);
+
+  return (
     <Container maxWidth="md">
-        <Grid container spacing={3} sx={{ mt: 4 }}>
+      <Grid container spacing={3} sx={{ mt: 4 }}>
         {flashcards.map((flashcard) => (
-            <Grid item xs={12} sm={6} md={4} key={flashcard.id}>
+          <Grid item xs={12} sm={6} md={4} key={flashcard.id}>
             <Card>
-                <CardActionArea onClick={() => handleCardClick(flashcard.id)}>
+              <CardActionArea onClick={() => handleCardClick(flashcard.id)}>
                 <CardContent>
-                    <Box sx={{ /* Styling for flip animation */ }}>
+                  <Box
+                    sx={
+                      {
+                        /* Styling for flip animation */
+                      }
+                    }
+                  >
                     <div>
-                        <div>
+                      <div>
                         <Typography variant="h5" component="div">
-                            {flashcard.front}
+                          {flashcard.front}
                         </Typography>
-                        </div>
-                        <div>
+                      </div>
+                      <div>
                         <Typography variant="h5" component="div">
-                            {flashcard.back}
+                          {flashcard.back}
                         </Typography>
-                        </div>
+                      </div>
                     </div>
-                    </Box>
+                  </Box>
                 </CardContent>
-                </CardActionArea>
+              </CardActionArea>
             </Card>
-            </Grid>
+          </Grid>
         ))}
-        </Grid>
+      </Grid>
     </Container>
-    )
-
-  }
+  );
+}

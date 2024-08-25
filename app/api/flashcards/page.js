@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getDoc, doc, collection, writeBatch } from "Firestore";
+import { getDoc, doc, collection, writeBatch } from "firestore";
 import {
   Card,
   CardActionArea,
