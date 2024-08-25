@@ -63,9 +63,9 @@ export default function Home() {
     </Button>
     </Box>
 
-    <Box sx={{my: 6}}>
-      <Typography variant="h4" component="h2" gutterBottom>Features</Typography>
-      <Grid container spacing={4} position="relative" top="50px">
+    <Box sx={{my: 6}} alignItems="center" > 
+      <Typography variant="h4" component="h2" gutterBottom >Features</Typography>
+      <Grid container spacing={2} position="relative" top="50px">
         {/* Feature items */}
         <Grid item>
         <Card padding={2}>
